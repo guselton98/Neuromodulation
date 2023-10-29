@@ -11,64 +11,88 @@ import skimage
 from skimage.measure import label, regionprops, regionprops_table
 from skimage.transform import rotate
 
+# Read in image file
 image = plt.imread('Part Two\\NLE_s1_contra_GFAP-FITC_NeuN-CY5_20x_1.jpg')
 M = np.asarray(image)
+
+# Plot separate RGB channels of image
 plt.figure(figsize=(12, 6))
 plt.subplot(131)
-
 plt.imshow(M[:, :, 0], cmap='Reds', vmin=0, vmax=255)
 plt.title("Red Channel")
 plt.subplot(132)
-
 plt.imshow(M[:, :, 1], cmap='Greens', vmin=0, vmax=255)
 plt.title("Green Channel")
 plt.subplot(133)
-
 plt.imshow(M[:, :, 2], cmap='Blues', vmin=0, vmax=255)
 plt.title("Blue Channel")
 
-#plt.show()
-
 # Sharpen red channel
+plt.figure(figsize=(12, 6))
 kernel_sharpen_1 = np.array([[-1,-1,-1], [-1,9,-1], [-1,-1,-1]])
 sharpened_image = cv2.filter2D(M[:, :, 0], -1, kernel_sharpen_1)
 plt.imshow(sharpened_image)
 plt.title("Sharpened Image")
-#plt.show()
 
 # Apply a threshold to the sharpened image to create a mask
-ret, thres_image = cv2.threshold(sharpened_image, 50, 255,cv2.THRESH_BINARY)
-plt.imshow(thres_image)
-plt.title("Masked Image")
-#plt.show()
-#cv2.waitKey(0)
+ret, thres_image = cv2.threshold(sharpened_image, 60, 255,cv2.THRESH_BINARY)
 
-# Apply open/close morphologies
-kernel = np.ones((3, 3), np.uint8)
+def diamond(r):
+    b = np.r_[:r, r:-1:-1]
+    return (b[:, None]+b) >= r
+
+# Delete small specs
+spec_mask = diamond(3)*1
+spec_mask = spec_mask.astype(np.uint8)
+thres_image = cv2.morphologyEx(thres_image, cv2.MORPH_OPEN,
+                           spec_mask, iterations=1)
+thres_image = cv2.morphologyEx(thres_image, cv2.MORPH_CLOSE,
+                           spec_mask, iterations=1)
+
+# Close Image
+close_mask = diamond(5)*1
+close_mask = close_mask.astype(np.uint8)
 closed_image = cv2.morphologyEx(thres_image, cv2.MORPH_CLOSE,
-                           kernel, iterations=1)
-
-kernel = np.ones((5,5), np.uint8)
+                           close_mask, iterations=1)
+# Open Image
+open_mask = diamond(3)*1
+open_mask = open_mask.astype(np.uint8)
 opened_image = cv2.morphologyEx(closed_image, cv2.MORPH_OPEN,
-                           kernel, iterations=1)
+                           open_mask, iterations=1)
 
+# Plot the results of opening and closing a thresholded image
+plt.figure()
+plt.subplot(131)
+plt.imshow(thres_image)
+plt.title("Thresholded Image")
+plt.subplot(132)
+plt.imshow(closed_image)
+plt.title("Closed Image")
+plt.subplot(133)
 plt.imshow(opened_image)
-plt.title("Opening")
-#plt.show()
+plt.title("Opened Image")
 
+# Overlay opened_image with red channel
 Red_channel = M[:, :, 0]
-Mask = opened_image
-result_image = cv2.bitwise_and(Red_channel, Mask)
-plt.imshow(result_image)
-plt.title("result_image")
+result_image = cv2.bitwise_and(Red_channel, opened_image)
+
+plt.figure()
+plt.subplot(121)
+plt.imshow(result_image, cmap='Reds', vmin=0, vmax=255)
+plt.title('Final Image')
+plt.subplot(122)
+plt.imshow(image)
+plt.title("Original Image")
 plt.show()
 
+# Label Image and find region properties
 label_img = label(opened_image)
 regions = regionprops(label_img)
 
+# Visualise results from regionprops
+plt.figure()
 fig, ax = plt.subplots()
 ax.imshow(opened_image, cmap=plt.cm.gray)
-
 for props in regions:
     y0, x0 = props.centroid
     orientation = props.orientation
@@ -80,13 +104,16 @@ for props in regions:
     ax.plot((x0, x1), (y0, y1), '-r', linewidth=2.5)
     ax.plot((x0, x2), (y0, y2), '-r', linewidth=2.5)
     ax.plot(x0, y0, '.g', markersize=15)
-
 plt.show()
 
+# Overlay with Red image
+
+# Overlay with original Image
+
+
+# Export regionprops data to excel spreadsheet
 props = regionprops_table(label_img, properties=('centroid',
                                                  'orientation',
                                                  'solidity'))
-
 df = pd.DataFrame(props)
-
 df.to_csv('Part Two\\temp.csv')
