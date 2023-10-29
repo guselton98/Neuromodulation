@@ -11,7 +11,7 @@ import skimage
 from skimage.measure import label, regionprops, regionprops_table
 from skimage.transform import rotate
 
-image = plt.imread('NLE_s1_contra_GFAP-FITC_NeuN-CY5_20x_1.jpg')
+image = plt.imread('Part Two\\NLE_s1_contra_GFAP-FITC_NeuN-CY5_20x_1.jpg')
 M = np.asarray(image)
 plt.figure(figsize=(12, 6))
 plt.subplot(131)
@@ -89,4 +89,4 @@ props = regionprops_table(label_img, properties=('centroid',
 
 df = pd.DataFrame(props)
 
-df.to_csv('temp.csv')
+df.to_csv('Part Two\\temp.csv')
