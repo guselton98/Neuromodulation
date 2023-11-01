@@ -11,6 +11,9 @@ import skimage
 from skimage.measure import label, regionprops, regionprops_table
 from skimage.transform import rotate
 
+# Tiff import/export
+from PIL import Image
+
 # Read in image file
 image = plt.imread('Part Two\\NLE_s1_contra_GFAP-FITC_NeuN-CY5_20x_1.jpg')
 M = np.asarray(image)
