@@ -28,9 +28,34 @@ M = M/M.max()*255
 M = M.astype(np.uint8)
 plt.imshow(M)
 
-contours0, hierarchy = cv2.findContours(M, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+#th3 = cv2.adaptiveThreshold(M,255,cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY,11,2)
+
+th3 = cv2.GaussianBlur(M,(5,5),0)
+th3 = cv2.adaptiveThreshold(th3,255,cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY,7,2)
+th3 = 255-th3
+plt.imshow(th3,'gray')
+plt.show()
+cv2.waitKey(0)
+
+
+shapes, hierarchy = cv2.findContours(th3, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+
+cv2.drawContours(image=M, contours=shapes, contourIdx=-1, color=(0, 255, 0), thickness=2, lineType=cv2.LINE_AA)
+for iteration, shape in enumerate(shapes):
+
+        if hierarchy[0,iteration,3] == -1:
+                print(hierarchy[0,iteration,3])
+                print(iteration)
+
+cv2.imshow('Shapes', M)
+cv2.waitKey(0)
+
+
+level = 10000
+cv2.drawContours(M, contours, level, (128, 255, 255), 1)
+cv2.imshow('Contours', M)
+
 h, w = M.shape[:2]
-contours = [cv2.approxPolyDP(cnt, 3, True) for cnt in contours0]
 
 def update(levels):
     vis = np.zeros((h, w, 3), np.uint8)
@@ -38,8 +63,7 @@ def update(levels):
     cv2.drawContours(vis, contours, (-1, 3)[levels <= 0], (128, 255, 255), 3, cv2.CV_8S, hierarchy, abs(levels))
     cv2.imshow('contours', vis)
 
-
-update(1)
+update(3)
 cv2.createTrackbar("levels+3", "contours", 3, 7, update)
 cv2.imshow('image', M)
 
