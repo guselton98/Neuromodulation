@@ -5,6 +5,9 @@
 # import Exercise3
 # import Exercise4
 # import Exercise5
+# import Exercise6
+# import Exercise7
+import Exercise8
 
 
 
