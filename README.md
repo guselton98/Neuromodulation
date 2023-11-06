@@ -1,5 +1,5 @@
 ![Capture](https://github.com/guselton98/Neuromodulation/assets/54299172/e2654c69-b37f-4550-bff9-021515c9bccc)
-<img src="[https://github.com/favicon.ico](https://github.com/guselton98/Neuromodulation/assets/54299172/e2654c69-b37f-4550-bff9-021515c9bccc)" width="48">
+<img src="https://github.com/guselton98/Neuromodulation/assets/54299172/e2654c69-b37f-4550-bff9-021515c9bccc" width="48">
 # Neuromodulation Workshop November 2023
 Welcome to the coding section of the Neuromodulation Workshop.
 In this repository you will find the code required for Part 1 and Part 2 of the workshop along with other examples.
