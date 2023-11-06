@@ -10,4 +10,4 @@ We explore basic python coding in 'Part One folder'. We learn how to import and 
 ## Part Two
 In this section we will analyse the following image in the 'Part Two Folder'. Rudimentary imaging techniques are used to extract cell bodies
 
-<img src="(https://github.com/guselton98/Neuromodulation/assets/54299172/cba0fa8d-7787-4fd2-aa23-f0ac043c2347" width="1000">
+<img src="https://github.com/guselton98/Neuromodulation/assets/54299172/cba0fa8d-7787-4fd2-aa23-f0ac043c2347" width="1000">
