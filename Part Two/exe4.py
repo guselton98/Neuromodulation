@@ -2,7 +2,6 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import cv2
-from skimage import morphology
 
 # Read in image file
 filename = 'NLE_s1_contra_GFAP-FITC_NeuN-CY5_20x_1.jpg'

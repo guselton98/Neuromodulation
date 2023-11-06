@@ -1,3 +1,4 @@
+# Neuromodulation Workshop: EXE 7
 import math
 import matplotlib.pyplot as plt
 import numpy as np

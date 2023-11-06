@@ -21,7 +21,4 @@ plt.figure(figsize=(12, 6))
 plt.imshow(sharpened_image)
 plt.title("Sharpened Image")
 
-# Median blur image
-
-
 # What happens to the boundaries of the cells ?

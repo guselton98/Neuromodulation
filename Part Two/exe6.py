@@ -1,9 +1,8 @@
-import math
+# Neuromodulation Workshop: EXE 6
 import matplotlib.pyplot as plt
 import numpy as np
-import pandas as pd
 import cv2
-from skimage.measure import label, regionprops, regionprops_table
+from skimage.measure import label
 
 from skimage import morphology
 
