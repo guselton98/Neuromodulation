@@ -75,7 +75,7 @@ df.to_csv('cell_properties.csv')
 #
 #
 # # Read in image file
-# im = Image.open('../Pre-workshop/MAX_20x NeuN_2.tif')
+# im = Image.open('../Other/MAX_20x NeuN_2.tif')
 # M = np.array(im)
 # M = M/M.max()*255
 # M = M.astype(np.uint8)
