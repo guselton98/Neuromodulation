@@ -10,3 +10,4 @@ We explore basic python coding in 'Part One folder'. We learn how to import and 
 ## Part Two
 In this section we will analyse the following image in the 'Part Two Folder'. Rudimentary imaging techniques are used to extract cell bodies
 ![NLE_s1_contra_GFAP-FITC_NeuN-CY5_20x_1](https://github.com/guselton98/Neuromodulation/assets/54299172/e34abfc6-afd8-46d3-bfb9-239fc29b436d)
+<img src="https://github.com/guselton98/Neuromodulation/assets/54299172/e34abfc6-afd8-46d3-bfb9-239fc29b436d" width="48">
