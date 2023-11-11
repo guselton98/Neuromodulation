@@ -7,6 +7,7 @@
 # Renaming the reference name, so we don't need to constantly type out long names in our code.
 import numpy as np
 import pandas as pd
+matplotlib.use('TkAgg')
 import matplotlib.pyplot as plt
 
 #----------------------------------------------------------------------------------------------------------------------

@@ -4,7 +4,7 @@ import numpy as np
 import cv2
 
 # Read in image file
-filename = 'NLE_s1_contra_GFAP-FITC_NeuN-CY5_20x_1.jpg'
+filename = '../NLE_s1_contra_GFAP-FITC_NeuN-CY5_20x_1.jpg'
 image = plt.imread(filename)
 M = np.asarray(image)
 

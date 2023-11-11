@@ -4,7 +4,7 @@
 import pandas as pd
 import numpy as np
 
-data = pd.read_csv('cell_properties.csv')
+data = pd.read_csv('../cell_properties.csv')
 
 print(data)
 print(data.columns)

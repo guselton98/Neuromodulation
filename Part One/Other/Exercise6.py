@@ -5,7 +5,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
-data = pd.read_csv('cell_properties.csv')
+data = pd.read_csv('../cell_properties.csv')
 
 print(data)
 print(data.columns)

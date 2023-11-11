@@ -11,7 +11,7 @@ print("C is equal to ", C)
 
 
 # Write to a file
-f = open("temp.txt", "w")
+f = open("../temp.txt", "w")
 s = "C is equal to " + str(C)
 f.write(s)
 f.close()
