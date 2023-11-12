@@ -1,0 +1,1 @@
+# Tutorial Cell profiler: https://github.com/CellProfiler/CellProfiler/wiki/CellProfiler-as-a-Python-package
