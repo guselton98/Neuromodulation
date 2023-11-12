@@ -6,9 +6,9 @@
 import numpy as np
 import pandas as pd
 import matplotlib
-matplotlib.use('TkAgg')
 import matplotlib.pyplot as plt
 import matplotlib.colors as clr
+matplotlib.use('TkAgg')
 
 #----------------------------------------------------------------------------------------------------------------------
 # READ IN FILE

@@ -3,10 +3,11 @@
 
 #----------------------------------------------------------------------------------------------------------------------
 # IMPORTING LIBRARIES
+import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
 import cv2
-
+matplotlib.use('TkAgg')
 #----------------------------------------------------------------------------------------------------------------------
 # READ IN AN IMAGE FILE
 filename = 'NLE_s1_contra_GFAP-FITC_NeuN-CY5_20x_1.jpg'

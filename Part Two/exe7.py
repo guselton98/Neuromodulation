@@ -1,5 +1,6 @@
 # Neuromodulation Workshop: EXE 7
 import math
+import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
@@ -9,7 +10,7 @@ import plotly
 import plotly.express as px
 import plotly.graph_objects as go
 from skimage import data, filters, measure, morphology
-
+matplotlib.use('TkAgg')
 
 # Read in image file
 filename = 'NLE_s1_contra_GFAP-FITC_NeuN-CY5_20x_1.jpg'

@@ -1,8 +1,9 @@
 # Neuromodulation Workshop: EXE 5
+import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
 import cv2
-
+matplotlib.use('TkAgg')
 
 # Read in image file
 filename = 'NLE_s1_contra_GFAP-FITC_NeuN-CY5_20x_1.jpg'
