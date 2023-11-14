@@ -37,7 +37,7 @@ opened_image = cv2.morphologyEx(thres_image, cv2.MORPH_OPEN, open_mask, iteratio
 close_mask = diamond(5)*1
 close_mask = close_mask.astype(np.uint8)
 closed_image = cv2.morphologyEx(opened_image, cv2.MORPH_CLOSE, close_mask, iterations=1)
-# Close Image
+# Erode Image
 close_mask = diamond(3)*1
 close_mask = close_mask.astype(np.uint8)
 closed_image = cv2.morphologyEx(closed_image, cv2.MORPH_ERODE, close_mask, iterations=1)
@@ -45,7 +45,7 @@ closed_image = cv2.morphologyEx(closed_image, cv2.MORPH_ERODE, close_mask, itera
 # Label Image and
 label_img = label(closed_image)
 # Remove small specs from labelled image
-cleaned_img = morphology.remove_small_objects(label_img, min_size=50, connectivity=2)
+cleaned_img = morphology.remove_small_objects(label_img, min_size=20*np.pi**2, connectivity=2)
 
 plt.figure()
 plt.subplot(121)
